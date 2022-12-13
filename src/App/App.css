@@ -24,7 +24,7 @@ body {
     align-items: center;
 
     min-height: 100vh;
-    width: 100vw;
+    max-width: 100vw;
     background-image: url(../utils/christmas.jpg);
     background-position: 50% 72%;
 }

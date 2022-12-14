@@ -1,0 +1,90 @@
+.input-wrapper {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+input {
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+    padding-left: 1.5rem;
+    border-radius: .5rem;
+    font-size: 1.8rem;
+    width: 60%;
+}
+
+.display-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.counter-display {
+    background-color: white;
+    border-radius: .2rem;
+    font-size: 2rem;
+    margin: 0 .5rem;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    font-family: 'Mountains of Christmas', cursive;
+    font-size: 2.2rem;
+    color: white;
+    height: 4.5rem;
+    width: 9rem;
+    margin-left: auto;
+    background-color: red;
+    border-radius: .5rem;
+
+}
+
+.counter-button {
+    height: 2rem;
+    width: 2rem;
+}
+
+
+ul {
+    list-style: none;
+    font-size: 1.6rem;
+    color: white;
+
+}
+
+li {
+    display: flex;
+    align-items: center;
+    margin: 1.8rem 0;
+    font-size: 2.2rem;
+}
+
+.li-button {
+    font-size: 2.2rem;
+    height: 3rem;
+    width: 4rem;
+}
+
+.default-text {
+    margin-top: 4rem;
+    font-size: 3.5rem;
+    color: white;
+    text-align: center;
+}
+
+.borrar-todo {
+    width: 80%;
+    margin: 1rem auto;
+}

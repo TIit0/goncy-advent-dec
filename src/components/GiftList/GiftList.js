@@ -7,10 +7,17 @@ export default function GiftList() {
     const [state, dispatch] = useReducer(reducer, { gifts: [], counter: 0 });
 
     console.log(state.gifts, state.counter)
+
+
     function handleSubmit(e) {
         e.preventDefault();
         const input = e.target.giftInput.value;
         if (input.trim() === "") return;
+        if (state.counter > 0 ) {
+            for(let i = 1; i < state.counter; i++) {
+                dispatch({ type: ACTIONS.ADD_GIFT, payload: { gift: input } });
+            }
+        }
 
         dispatch({ type: ACTIONS.ADD_GIFT, payload: { gift: input } });
 

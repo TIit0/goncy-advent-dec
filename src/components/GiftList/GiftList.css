@@ -66,6 +66,15 @@ li {
     align-items: center;
 }
 
+img {
+    height: 5rem;
+    width: 5rem;
+    border-radius: .5rem;
+    margin-right: auto;
+    background-image: url(../../utils/imgs/socks.jpg);
+    background-size: contain;
+}
+
 .li-button {
     margin-left: auto;
     height: 2.5rem;

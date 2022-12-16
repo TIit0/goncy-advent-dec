@@ -16,7 +16,7 @@ export function reducer(state, action) {
         case ACTIONS.ADD_GIFT:
             return {
                 ...state,
-                gifts: [...state.gifts, addGift(action.payload.gift, action.payload.count)]
+                gifts: [...state.gifts, addGift(action.payload.gift, action.payload.count, action.payload.url)]
             };
         case ACTIONS.REMOVE_GIFT:
             return {...state, gifts: state.gifts.filter( gift => {
@@ -29,6 +29,8 @@ export function reducer(state, action) {
     }
 }
 
-function addGift(gift, howMany) {
-    return { id: Date.now() + Math.random(), name: howMany > 1 ? `${gift} x${howMany}` : gift }
+function addGift(gift, howMany, url) {
+    return { id: Date.now() + Math.random(),
+            name: howMany > 1 ? `${gift} x${howMany}` : gift,
+           link: url }
 }

@@ -1,14 +1,18 @@
 import "./GiftList.css"
 import { ACTIONS, reducer } from "../../utils/functions/reducer"
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 
 export default function GiftList() {
 
     function lazyInit() {
-
+        return {gifts: JSON.parse(window.localStorage.getItem("GiftList")), counter: 0}
     }
 
-    const [state, dispatch] = useReducer(reducer, { gifts: [{ id: 1671227433077.1428, name: 'wazza x4' }], counter: 0 })
+    const [state, dispatch] = useReducer(reducer, { gifts: [] , counter: 0 }, lazyInit)
+
+    useEffect(() => {
+        window.localStorage.setItem("GiftList", JSON.stringify(state.gifts))
+    }, [state.gifts])
 
     function handleSubmit(e) {
         e.preventDefault();

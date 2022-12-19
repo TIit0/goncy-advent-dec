@@ -1,18 +1,27 @@
 
 import './App.css';
 import Form from "../components/Form/Form";
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 import { ACTIONS, reducer } from "../utils/functions/reducer"
 
 function App() {
 
-  const [state, dispatch] = useReducer(reducer,
-    {
+  const [state, dispatch] = useReducer(reducer, {}, lazyInit);
+
+  function lazyInit() {
+    return {
       isModalOpen: false,
-      gifts: [{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },],
+      gifts: JSON.parse(window.localStorage.getItem("giftList")) || [],
       quantity: 0,
-      url: null,
-    })
+      url: null,}
+  }
+  
+
+  useEffect(() => {
+
+    window.localStorage.setItem("giftList", JSON.stringify(state.gifts))
+  }, [state.gifts])
+
 
 
   return (

@@ -25,7 +25,7 @@ function handleSubmit(e) {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="inputGift">Regalo:</label>
                 <input type="text" id="inputGift" required></input>
-                <label htmlFor="inputUrl">Url:</label>
+                <label htmlFor="inputUrl">Url Imagen:</label>
                 <input type="text" id="inputUrl"></input>
                 <label htmlFor="inputQuantity">Cantidad:</label>
                 <input type="text" id="inputQuantity"></input>

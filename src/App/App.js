@@ -9,10 +9,11 @@ function App() {
   const [state, dispatch] = useReducer(reducer,
     {
       isModalOpen: false,
-      gifts: [{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' }],
+      gifts: [{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },{ id: 1671478864582.7427, name: 'hello x2', url: 'theurl' },],
       quantity: 0,
       url: null,
     })
+
 
   return (
     <>

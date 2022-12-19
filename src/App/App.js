@@ -14,7 +14,6 @@ function App() {
       url: null,
     })
 
-  console.log(state.gifts)
   return (
     <>
       {state.isModalOpen ? <Form state={state} dispatch={dispatch} /> : null}

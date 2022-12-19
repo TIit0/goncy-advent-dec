@@ -7,10 +7,10 @@ function handleSubmit(e) {
     const giftInput = e.target.inputGift.value;
     const urlInput = e.target.inputUrl.value;
     const quantityInput = parseInt(e.target.inputQuantity.value);
-    e.preventDefault();
-    if (giftInput.trim() === "" || urlInput.trim() === "") return;
 
-    console.log(giftInput, urlInput, quantityInput);
+    e.preventDefault();
+    if(isNaN(quantityInput)) return;
+    if (giftInput.trim() === "" || urlInput.trim() === "") return;
 
     dispatch({type: ACTIONS.ADD_GIFT, payload: {gift: giftInput, quantity: quantityInput, url: urlInput }})
 

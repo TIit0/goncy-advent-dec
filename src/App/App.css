@@ -1,4 +1,120 @@
-.App {
-  
+@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap');
+
+
+:root {
+    --font: 'Mountains of Christmas', cursive;
 }
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    min-height: 100vh;
+    max-width: 100vw;
+    background-image: url(../utils/imgs/christmas.jpg);
+    background-position: 50% 72%;
+}
+
+.giftList-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+
+    width: 40rem;
+    min-height: 40rem;
+    background-color: rgba(0, 128, 0, 0.596);
+    border-radius: 1rem;
+    padding: 3rem;
+}
+
+h1 {
+    font-size: 5.8rem;
+    color: white;
+    font-family: var(--font);
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    height: 4rem;
+    width: 80%;
+    font-family: var(--font);
+    font-size: 2.5rem;
+    color: white;
+    background-color: red;
+    border-radius: .5rem;
+    margin: 1.5rem auto;
+}
+
+ul {
+    width: 100%;
+    list-style: none;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem 0;
+}
+
+img {
+    height: 5rem;
+    width: 5rem;
+    background-image: url(../utils/imgs/blanket.jpg);
+    background-size: contain;
+    font-size: .5rem;
+    border-radius: .5rem;
+}
+
+.li-text {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 2rem;
+    font-size: 2.4rem;
+    color: white;
+}
+
+.forWho {
+    margin-top: .5rem;
+    color: rgb(187, 189, 255);
+    font-size: 2rem;
+}
+
+.li-button {
+    margin: 0;
+    height: 3rem;
+    width: 3rem;
+}
+
+.default-text {
+    font-size: 3.8rem;
+    color: white;
+    margin: 3rem auto;
+}
+
 

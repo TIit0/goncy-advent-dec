@@ -1,0 +1,49 @@
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+}
+
+form {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+
+    width: 40rem;
+    min-height: 40rem;
+    border-radius: 1rem;
+    background-color: aliceblue;
+    padding: 3rem;
+    z-index: 2;
+}
+
+label {
+    font-size: 2.2rem;
+}
+
+input {
+    margin: 1rem 0;
+    height: 3rem;
+    border-radius: .5rem;
+    padding-left: 1rem;
+    font-size: 1.8rem;
+}
+
+.form-button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-button {
+    margin: 2rem 1rem;
+    width: 10rem;
+}

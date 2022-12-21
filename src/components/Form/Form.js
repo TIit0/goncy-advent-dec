@@ -2,7 +2,10 @@ import "./Form.css"
 import { ACTIONS } from "../../utils/functions/reducer";
 import ReactDOM from "react-dom";
 
-export default function Form({ dispatch }) {
+export default function Form({ dispatch, edit }) {
+
+    const editing = edit.gift == undefined ? false : true;
+    console.log(editing)
 
     function handleSubmit(e) {
         const regalo = e.target.regalo.value;
@@ -14,6 +17,21 @@ export default function Form({ dispatch }) {
         if (regalo.trim() === "" || para.trim() === "" || url.trim() === "") return;
 
         console.log(regalo, para, url, cantidad)
+
+        if (edit.isEditOn) {
+            return dispatch({
+                type: ACTIONS.UPDATE_EDITED_GIFT,
+                payload: {
+                    gift: {
+                        regalo,
+                        para,
+                        url,
+                        cantidad
+                    },
+                    id: edit.gift.id
+                }
+            })
+        }
 
         dispatch({
             type: ACTIONS.ADD_GIFT, payload: {
@@ -33,23 +51,40 @@ export default function Form({ dispatch }) {
 
             <form onSubmit={handleSubmit}>
                 <label htmlFor="regalo">Regalo:</label>
-                <input type="text" id="regalo"></input>
+                <input type="text" id="regalo"
+                    defaultValue={editing ? edit.gift.regalo : ""}></input>
                 <label htmlFor="para">Para:</label>
-                <input type="text" id="para"></input>
+                <input type="text" id="para"
+                    defaultValue={editing ? edit.gift.para : ""}></input>
                 <label htmlFor="url">Url:</label>
-                <input type="text" id="url"></input>
+                <input type="text" id="url"
+                    defaultValue={editing ? edit.gift.url : ""}></input>
                 <label htmlFor="cantidad">Cantidad:</label>
-                <input type="text" id="cantidad"></input>
+                <input type="text" id="cantidad"
+                    defaultValue={editing ? edit.gift.cantidad : ""}></input>
 
                 <div className="form-button-container">
 
                     <button
                         className="form-button"
                         type="button"
-                        onClick={() => dispatch({ type: ACTIONS.CLOSE_MODAL })}>Cerrar
+                        onClick={() => {
+                            if (!edit.isEditOn) {
+                                dispatch({ type: ACTIONS.CLOSE_MODAL })
+                            } else if (edit.isEditOn) { 
+                                dispatch({
+                                    type: ACTIONS.CLEAR_EDIT, payload: {
+                                        isEditOn: false,
+                                        gift: undefined
+                                    }
+                                })
+                            }
+                        }}>Cerrar
                     </button>
 
-                    <button className="form-button">Agregar</button>
+                    <button className="form-button">
+                        {edit.isEditOn ? "Guardar" : "Agregar"}
+                    </button>
                 </div>
             </form>
         </>,

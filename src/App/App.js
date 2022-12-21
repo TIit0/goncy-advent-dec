@@ -7,22 +7,30 @@ import Edit from '../components/Edit/Edit';
 
 function App() {
 
-  function lazyInit() {
-    return {isModalOpen: false, gifts: JSON.parse(window.localStorage.getItem("giftList"))}
-  }
-
-  const [state, dispatch] = useReducer(reducer, { isModalOpen: false, gifts: [] }, lazyInit)
-  console.log(state.gifts)
+  const [state, dispatch] = useReducer(reducer, {}, lazyInit);
+  console.log("state:" , state)
 
 
-  useEffect( () =>{
+  useEffect(() => {
     window.localStorage.setItem("giftList", JSON.stringify(state.gifts))
-  }, [state.gifts] );
+  }, [state.gifts]);
+
+
+  function lazyInit() {
+    return {
+      isModalOpen: false,
+      gifts: JSON.parse(window.localStorage.getItem("giftList")) || [],
+      edit: {
+        isEditOn: false,
+      }
+    }
+  }
 
 
   return (
     <div className="App">
-      {state.isModalOpen ? <Form dispatch={dispatch} /> : null}
+
+      {state.isModalOpen ? <Form dispatch={dispatch} edit={state.edit} /> : null}
 
       <main>
         <h1>Regalos:</h1>
@@ -44,6 +52,15 @@ function App() {
               <div className='li-button-wrapper'>
 
                 <button
+                  onClick={() => {
+                    console.log(gift)
+                    return dispatch({
+                      type: ACTIONS.EDIT_GIFT, payload: {
+                        isEditOn: true,
+                        gift
+                      }
+                    })
+                  }}
                   className='li-button'
                   type="button"> <Edit /> </button>
 
@@ -62,15 +79,15 @@ function App() {
           ))}
         </ul>
 
-        {state.gifts.length < 1 ? 
+        {state.gifts.length < 1 ?
 
-        <p className='default-text'>Agrega Regalos!</p> :
+          <p className='default-text'>Agrega Regalos!</p> :
 
-        <button 
-        type="button"
-        onClick={() => dispatch({type: ACTIONS.CLEAR_LIST})}
-        >Borrar todo
-        </button>}
+          <button
+            type="button"
+            onClick={() => dispatch({ type: ACTIONS.CLEAR_LIST })}
+          >Borrar todo
+          </button>}
 
       </main>
     </div>

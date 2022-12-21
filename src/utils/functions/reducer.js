@@ -41,17 +41,17 @@ export function reducer(state, action) {
             console.log(action.payload)
             return {
                 ...state, gifts: state.gifts.map(gift => {
-                    if (gift.id === action.payload.id) {
+                    if (gift.id !== action.payload.id) {
+                    return gift
+                } else {
                     return {id: action.payload.id,
                         regalo: action.payload.gift.regalo,
                         para: action.payload.gift.para,
                         url: action.payload.gift.url,
                         cantidad: action.payload.gift.cantidad
-                    }; 
+                    }
                 }
-
-                    return null;
-                }), edit: { isEditOn: false, gift: {regalo: false} }, isModalOpen: false
+                }), edit: { isEditOn: false, gift: false }, isModalOpen: false
             };
         case ACTIONS.CLEAR_LIST:
             return { ...state, gifts: [] };

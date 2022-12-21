@@ -4,16 +4,16 @@ import ReactDOM from "react-dom";
 
 export default function Form({ dispatch, edit }) {
 
-    const editing = edit.gift == undefined ? false : true;
+    const editing = edit.gift ? true : false;
     console.log(editing)
 
     function handleSubmit(e) {
         const regalo = e.target.regalo.value;
         const para = e.target.para.value;
         const url = e.target.url.value;
-        const cantidad = e.target.cantidad.value;
+        let cantidad = parseInt(e.target.cantidad.value);
         e.preventDefault();
-
+        if(isNaN(cantidad)) cantidad = 1;
         if (regalo.trim() === "" || para.trim() === "" || url.trim() === "") return;
 
         console.log(regalo, para, url, cantidad)
@@ -47,7 +47,18 @@ export default function Form({ dispatch, edit }) {
         <>
             <div
                 className="modal"
-                onClick={() => dispatch({ type: ACTIONS.CLOSE_MODAL })} />
+                onClick={() => {
+                    if (!edit.isEditOn) {
+                        dispatch({ type: ACTIONS.CLOSE_MODAL })
+                    } else if (edit.isEditOn) { 
+                        dispatch({
+                            type: ACTIONS.CLEAR_EDIT, payload: {
+                                isEditOn: false,
+                                gift: undefined
+                            }
+                        })
+                    }
+                }} />
 
             <form onSubmit={handleSubmit}>
                 <label htmlFor="regalo">Regalo:</label>
@@ -56,7 +67,7 @@ export default function Form({ dispatch, edit }) {
                 <label htmlFor="para">Para:</label>
                 <input type="text" id="para"
                     defaultValue={editing ? edit.gift.para : ""}></input>
-                <label htmlFor="url">Url:</label>
+                <label htmlFor="url">Url imagen:</label>
                 <input type="text" id="url"
                     defaultValue={editing ? edit.gift.url : ""}></input>
                 <label htmlFor="cantidad">Cantidad:</label>

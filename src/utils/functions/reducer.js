@@ -32,6 +32,8 @@ export function reducer(state, action) {
                     return null;
                 })
             };
+        case ACTIONS.CLEAR:
+            return {...state, giftList: []}
         case ACTIONS.OPEN_EDIT:
             console.log(action.payload.gift)
             return {
@@ -43,29 +45,31 @@ export function reducer(state, action) {
                 }
             };
         case ACTIONS.EDIT_GIFT:
-            return {...state, 
-                giftList: state.giftList.filter( gift => {
-                    if (action.payload.id !== gift.id ) {
+            return {
+                ...state,
+                giftList: state.giftList.filter(gift => {
+                    if (action.payload.id !== gift.id) {
                         return gift;
                     } else {
-                        return {
-                            id: action.payload.id,
-                            regalo: action.payload.regalo,
-                            para: action.payload.para,
-                            url: action.payload.url,
-                            cantidad: action.payload.cantidad
-                        }
+                        gift.id = action.payload.id
+                        gift.regalo = action.payload.regalo
+                        gift.para = action.payload.para
+                        gift.url = action.payload.url
+                        gift.cantidad = action.payload.cantidad
                     }
-            })}
-            case ACTIONS.CLOSE_EDIT:
-                return {
-                    ...state,
-                    isModalOpen: false,
-                    editMode: {
-                        isActive: false,
-                        giftToEdit: null,
-                    }
-                };
+                })
+            }
+        case ACTIONS.CLOSE_EDIT:
+            return {
+                ...state,
+                isModalOpen: false,
+                editMode: {
+                    isActive: false,
+                    giftToEdit: null,
+                }
+            };
+            default: 
+            return state;
     }
 }
 

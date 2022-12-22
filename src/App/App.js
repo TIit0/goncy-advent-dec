@@ -6,17 +6,22 @@ import { ACTIONS, reducer } from '../utils/functions/reducer';
 import Edit from '../utils/imgs/svgs/Edit';
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, {
-    isModalOpen: false,
-    giftList: [
-      {id: 1671730128896.3813, regalo: 'un regalo', para: 'kida', url: 'https://picsum.photos/seed/picsum/200/300', cantidad: '2'}
-    ],
-    editMode: {
-      isActive: false,
-      giftToEdit: null,
-    },
+  const [state, dispatch] = useReducer(reducer, {}, lazyInit);
 
-  });
+  function lazyInit() {
+    return {
+      isModalOpen: false,
+      giftList: JSON.parse(window.localStorage.getItem("giftList")) || [],
+      editMode: {
+        isActive: false,
+        giftToEdit: null,
+      },
+    }
+  }
+
+  useEffect(() => {
+    window.localStorage.setItem("giftList",JSON.stringify(state.giftList))
+  }, [state.giftList] )
 
   console.log(state.giftList)
   return (
@@ -49,8 +54,7 @@ function App() {
               </div>
 
               <div className='li-buttons'>
-
-                <button
+                <button /* edit gift button */
                   className='gift-button'
                   type="button"
                   onClick={() => dispatch({
@@ -72,13 +76,23 @@ function App() {
                   }
                 >X
                 </button>
-
-
               </div>
 
             </li>
           ))}
         </ul>
+
+        {
+        state.giftList.length < 1 ?
+
+        <p className='default-text'>Agrega Regalos!</p> :
+
+        <button
+        type="button"
+        onClick={() => dispatch({type: ACTIONS.CLEAR})}
+        >Borrar todo
+        </button>
+        }
       </main>
     </div>
   );

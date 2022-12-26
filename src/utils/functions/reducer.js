@@ -41,7 +41,14 @@ export function reducer(state, action) {
             return {
                 ...state, giftList:
                     state.giftList.filter(gift => {
-                        if (gift.id !== action.payload.giftToEdit.id) return gift;
+                        if (gift.id !== action.payload.giftToEdit.id) {
+                            return gift;
+                        } else { 
+                            gift.regalo = action.payload.giftToEdit.regalo;
+                            gift.para = action.payload.giftToEdit.para;
+                            gift.url = action.payload.giftToEdit.url;
+                            gift.cantidad = action.payload.giftToEdit.cantidad;
+                        }
 
                     })
             };

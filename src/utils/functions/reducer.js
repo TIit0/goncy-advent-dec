@@ -6,6 +6,7 @@ export const ACTIONS = {
     EDIT_GIFT: "edit",
     EDIT_ON: "on",
     EDIT_OFF: "off",
+    CLEAR_LIST: "clear"
 }
 
 export function reducer(state, action) {
@@ -37,19 +38,20 @@ export function reducer(state, action) {
                         })
             };
         case ACTIONS.EDIT_GIFT:
-            console.log(action.payload.giftToEdit)
             return {
                 ...state, giftList:
-                    state.giftList.filter(gift => {
+                    state.giftList.map(gift => {
                         if (gift.id !== action.payload.giftToEdit.id) {
                             return gift;
-                        } else { 
-                            gift.regalo = action.payload.giftToEdit.regalo;
-                            gift.para = action.payload.giftToEdit.para;
-                            gift.url = action.payload.giftToEdit.url;
-                            gift.cantidad = action.payload.giftToEdit.cantidad;
+                        } else {
+                            return {
+                                id: action.payload.giftToEdit.id,
+                                regalo: action.payload.giftToEdit.regalo,
+                                para: action.payload.giftToEdit.para,
+                                url: action.payload.giftToEdit.url,
+                                cantidad: action.payload.giftToEdit.cantidad,
+                            }
                         }
-
                     })
             };
         case ACTIONS.EDIT_ON:
@@ -68,6 +70,8 @@ export function reducer(state, action) {
                     giftToEdit: null,
                 }
             };
+        case ACTIONS.CLEAR_LIST:
+            return {...state, giftList: []}
     }
 }
 

@@ -102,3 +102,9 @@ img {
     margin: 0 .5rem;
 }
 
+.default-text {
+    font-size: 4.2rem;
+    color: white;
+    margin: 3rem auto;
+}
+

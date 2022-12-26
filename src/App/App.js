@@ -9,14 +9,14 @@ import Editsvg from '../utils/Svgs/Editsvg/Editsvg';
 function App() {
   const [state, dispatch] = useReducer(reducer, {
     isModalOpen: false,
-    giftList: [{ id: 1672082234700.3264, regalo: 'un regalo', para: 'tish', url: 'https://picsum.photos/seed/picsum/200/300', cantidad: '2' }],
+    giftList: [],
     editMode: {
       isEditOn: false,
       giftToEdit: null,
     }
   });
 
-
+console.log(state.giftList)
 
   return (
     <div className="App">
@@ -74,9 +74,18 @@ function App() {
                 >X
                 </button>
               </div>
+
             </li>
           ))}
         </ul>
+
+        {state.giftList.length < 1 ? 
+
+        <p className='default-text'>Agrega Regalos!</p> :
+
+        <button
+        type="button"
+        onClick={() => dispatch({type: ACTIONS.CLEAR_LIST})}>Borrar todo</button>}
 
       </main>
     </div>

@@ -43,10 +43,6 @@ export function reducer(state, action) {
                     state.giftList.filter(gift => {
                         if (gift.id !== action.payload.giftToEdit.id) return gift;
 
-                        gift.regalo = action.payload.giftToEdit.regalo;
-                        gift.para = action.payload.giftToEdit.para;
-                        gift.url = action.payload.giftToEdit.url;
-                        gift.cantidad = action.payload.giftToEdit.cantidad;
                     })
             };
         case ACTIONS.EDIT_ON:

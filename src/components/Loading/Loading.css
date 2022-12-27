@@ -1,0 +1,12 @@
+.cargando {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 4.2rem;
+    background-color: azure;
+    border-radius: 1rem;
+    width: 40rem;
+    height: 30rem;
+
+}

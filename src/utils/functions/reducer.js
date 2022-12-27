@@ -6,7 +6,9 @@ export const ACTIONS = {
     EDIT_GIFT: "edit",
     EDIT_ON: "on",
     EDIT_OFF: "off",
-    CLEAR_LIST: "clear"
+    CLEAR_LIST: "clear",
+    FETCH_GIFTS: "gifts",
+    CATCH_GIFTS: "catch"
 }
 
 export function reducer(state, action) {
@@ -71,7 +73,12 @@ export function reducer(state, action) {
                 }
             };
         case ACTIONS.CLEAR_LIST:
-            return {...state, giftList: []}
+            return {...state, giftList: []};
+        case ACTIONS.FETCH_GIFTS:
+            console.log(action.payload)
+            return {...state, isLoading: false, giftList: action.payload};
+        case ACTIONS.CATCH_GIFTS:
+            return {...state, isLoading: false, giftList: action.payload}
     }
 }
 

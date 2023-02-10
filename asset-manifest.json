@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/goncy-advent-dec/static/css/main.82bfdf5b.css",
+    "main.js": "/goncy-advent-dec/static/js/main.9a66e88a.js",
+    "static/media/blanket.jpg": "/goncy-advent-dec/static/media/blanket.73c1029621aedb2a19b5.jpg",
+    "static/media/christmas.jpg": "/goncy-advent-dec/static/media/christmas.5955e3731fd0538bb5ec.jpg",
+    "index.html": "/goncy-advent-dec/index.html",
+    "main.82bfdf5b.css.map": "/goncy-advent-dec/static/css/main.82bfdf5b.css.map",
+    "main.9a66e88a.js.map": "/goncy-advent-dec/static/js/main.9a66e88a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.82bfdf5b.css",
+    "static/js/main.9a66e88a.js"
+  ]
+}
